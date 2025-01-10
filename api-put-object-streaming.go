@@ -142,7 +142,7 @@ func (c *Client) putObjectMultipartStreamFromReadAt(ctx context.Context, bucketN
 	uploadPartsCh := make(chan uploadPartReq)
 
 	// Declare a channel that sends back the response of a part upload.
-	uploadedPartsCh := make(chan uploadedPartRes)
+	uploadedPartsCh := make(chan uploadedPartRes, totalPartsCount)
 
 	// Used for readability, lastPartNumber is always totalPartsCount.
 	lastPartNumber := totalPartsCount
